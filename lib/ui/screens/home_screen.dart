@@ -9,6 +9,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var inputText = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +21,20 @@ class _HomeScreenState extends State<HomeScreen> {
               flex: 3,
               child: Container(
                 color: greyDarkBg,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      inputText,
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                        color: greenColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -53,7 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 side: BorderSide(width: 0, color: Colors.transparent),
               ),
               backgroundColor: getBackgroundColor(text1)),
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(text1);
+          },
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -72,7 +90,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 side: BorderSide(width: 0, color: Colors.transparent),
               ),
               backgroundColor: getBackgroundColor(text2)),
-          onPressed: () {},
+          onPressed: () {
+            if (text2 == 'ce') {
+              setState(() {
+                if (inputText.isNotEmpty) {
+                  inputText = inputText.substring(0, inputText.length - 1);
+                }
+              });
+            } else {
+              buttonPressed(text2);
+            }
+          },
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -91,7 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 side: BorderSide(width: 0, color: Colors.transparent),
               ),
               backgroundColor: getBackgroundColor(text3)),
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(text3);
+          },
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -110,7 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 side: BorderSide(width: 0, color: Colors.transparent),
               ),
               backgroundColor: getBackgroundColor(text4)),
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(text4);
+          },
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -150,5 +182,11 @@ class _HomeScreenState extends State<HomeScreen> {
       return greenColor;
     }
     return greyColor;
+  }
+
+  void buttonPressed(String text) {
+    setState(() {
+      inputText += text;
+    });
   }
 }
