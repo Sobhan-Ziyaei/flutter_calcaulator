@@ -59,7 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(
               textAlign: TextAlign.center,
               text1,
-              style: const TextStyle(fontSize: 26, color: greyColor),
+              style: TextStyle(
+                fontSize: 26,
+                color: getTextColor(text1),
+              ),
             ),
           ),
         ),
@@ -75,7 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(
               textAlign: TextAlign.center,
               text2,
-              style: const TextStyle(fontSize: 26, color: greyColor),
+              style: TextStyle(
+                fontSize: 26,
+                color: getTextColor(text2),
+              ),
             ),
           ),
         ),
@@ -91,7 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(
               textAlign: TextAlign.center,
               text3,
-              style: const TextStyle(fontSize: 26, color: greyColor),
+              style: TextStyle(
+                fontSize: 26,
+                color: getTextColor(text3),
+              ),
             ),
           ),
         ),
@@ -107,7 +116,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(
               textAlign: TextAlign.center,
               text4,
-              style: const TextStyle(fontSize: 26, color: greyColor),
+              style: TextStyle(
+                fontSize: 26,
+                color: getTextColor(text4),
+              ),
             ),
           ),
         )
@@ -131,5 +143,12 @@ class _HomeScreenState extends State<HomeScreen> {
       return greyDarkBg;
     }
     return greyBg;
+  }
+
+  Color getTextColor(String text) {
+    if (isOperator(text)) {
+      return greenColor;
+    }
+    return greyColor;
   }
 }
